@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "core"
+# https://stackoverflow.com/questions/68684670/how-poetry-knows-my-package-is-located-in-the-src-folder
+packages = [
+    {include="api", from="apps"},
+    {include="core", from="apps"},
+    {include="db", from="apps"},
+    {include="helpers", from="apps"},
+    {include="models", from="apps"},
+    {include="schemas", from="apps"},
+    {include="services", from="apps"},
+]
+version = "0.1.0"
+description = ""
+authors = ["quanghuy20nd <huypropum2@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = {extras = ["uvicorn"], version = "^0.111.0"}
+pydantic-settings = "^2.2.1"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+pyjwt = "^2.8.0"
+sqlalchemy = {extras = ["postgresql-asyncpg"], version = "^2.0.30"}
+alembic = "^1.13.1"
+
+
+[tool.poetry.scripts]
+start-server = "apps.main:start"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
